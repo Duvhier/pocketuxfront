@@ -26,7 +26,7 @@ function AIAgentDemoForm() {
     console.log('Form submitted:', formData);
     
     try {
-      const response = await fetch('https://pocketuxback.vercel.app/demo', {
+      const response = await fetch('https://pocketuxback.vercel.app/api/demo', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
