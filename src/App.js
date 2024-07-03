@@ -27,8 +27,18 @@ function App({ onLogout }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
     
+    const user = localStorage.getItem('user');
+    const role = localStorage.getItem('role');
+
+    const dataToSend = {
+      user,
+      role,
+      ...formData
+    };
+
+    console.log('Formulario a enviar: ', dataToSend);
+
     try {
       const response = await fetch('https://pocketuxback.vercel.app/api/demo', {
       //const response = await fetch('http://localhost:4000/api/demo', {
@@ -36,7 +46,7 @@ function App({ onLogout }) {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(dataToSend)
       });
 
       if (!response.ok) {
