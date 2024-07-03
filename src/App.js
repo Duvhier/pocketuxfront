@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import Modal from 'react-modal';
 import './App.css';
 
-function AIAgentDemoForm() {
+Modal.setAppElement('#root');
+
+function App({ onLogout }) {
   const [formData, setFormData] = useState({
     clientName: '',
     agentType: '',
@@ -9,6 +12,7 @@ function AIAgentDemoForm() {
     keyClientInfo: '',
     additionalInfo: ''
   });
+  const [success, setSuccess] = useState(false);
 
   const agentTypes = ['Voice', 'WP', 'IG', 'FB', 'LinkedIn'];
   const useCases = ['Medical Assistant', 'Cobranzas'];
@@ -26,8 +30,8 @@ function AIAgentDemoForm() {
     console.log('Form submitted:', formData);
     
     try {
-        const response = await fetch('https://pocketuxback.vercel.app/api/demo', {
-        //const response = await fetch('http://localhost:4000/api/demo', {
+      const response = await fetch('https://pocketuxback.vercel.app/api/demo', {
+      //const response = await fetch('http://localhost:4000/api/demo', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -37,13 +41,29 @@ function AIAgentDemoForm() {
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
+      } else {
+        console.log('Success:', response);
+        setSuccess(true);
+        setFormData({
+          clientName: '',
+          agentType: '',
+          useCase: '',
+          keyClientInfo: '',
+          additionalInfo: ''
+        });
       }
-
-      const result = await response.json();
-      console.log('Success:', result);
     } catch (error) {
       console.error('Error:', error);
     }
+  };
+
+  const closeModal = () => {
+    setSuccess(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    onLogout();
   };
 
   const renderAdditionalField = () => {
@@ -96,8 +116,9 @@ function AIAgentDemoForm() {
 
   return (
     <div className="form-container">
+      <button className="logout-button" onClick={handleLogout}>Logout</button>
       <form onSubmit={handleSubmit} className="ai-agent-form">
-        <h2>AI Agent Demo</h2>
+        <h2 className="form-title">TIFFANY</h2>
         
         <div className="form-group">
           <label htmlFor="clientName">Client Name</label>
@@ -157,14 +178,20 @@ function AIAgentDemoForm() {
           Start Demo
         </button>
       </form>
-    </div>
-  );
-}
 
-function App() {
-  return (
-    <div className="App">
-      <AIAgentDemoForm />
+      <Modal
+        isOpen={success}
+        onRequestClose={closeModal}
+        contentLabel="Success Modal"
+        className="modal"
+        overlayClassName="overlay"
+      >
+        <div className="modal-content">
+          <h2>Success</h2>
+          <p>DEMO submitted successfully!</p>
+          <button onClick={closeModal} className="submit-button">Close</button>
+        </div>
+      </Modal>
     </div>
   );
 }
