@@ -1,0 +1,79 @@
+.form-container-register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 500px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin: 0 auto;
+    border-color: #764ba2;
+    max-width: 400px;
+    padding: 20px;
+  }
+
+  .form-group-register input[type="date"] {
+    width: calc(100% - 20px); /* Asegurar que el selector de fecha no sobresalga */
+    padding: 10px;
+  }
+
+  .form-group-register {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+  
+  .form-group-register label {
+    color: #a0aec0;
+    font-size: 16px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-group-register input,
+  .form-group-register select,
+  .form-group-register textarea {
+    width: 380px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #F3E5F5;
+    border: 1px solid #E91E63;
+    border-radius: 5px;
+    color: #673AB7;
+    font-size: 16px;
+  }
+  
+  .form-group-register input:focus,
+  .form-group-register select:focus,
+  .form-group-register textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.5);
+  }
+  
+  .form-group-register textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  .submit-button-register {
+    width: 100%;
+    background-color: #E91E63;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+  
+  .submit-button-register:hover {
+    background-color: #C2185B;
+  }
+  
+  .submit-button-register:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(76, 81, 191, 0.5);
+  }

@@ -1,0 +1,101 @@
+/* Contenedor principal */
+.home-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    left: 130%;
+    top: -120px; /* Ajusta este valor para mover el contenedor más arriba */
+}
+
+.home-container-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+/* Video de fondo */
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Contenedor del formulario */
+.form-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    position: relative;
+    z-index: 1;
+    max-width: 400px;
+    color: #673AB7;
+    margin-left: 50px; /* Ajusta el margen izquierdo */
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+/* Otros estilos */
+.form-title {
+    font-size: 30px;
+    font-family: monospace;
+    color: #FFC107;
+}
+
+.promo-text {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.submit-button {
+    background-color: #673AB7;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #4e278d;
+}
+
+/* Logos */
+.logos-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.logo {
+    width: 50px;
+    transition: transform 0.2s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .form-container {
+        width: 85%;
+        padding: 15px;
+        margin-left: 20px; 
+    }
+}
